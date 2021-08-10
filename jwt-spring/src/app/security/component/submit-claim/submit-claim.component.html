@@ -1,45 +1,62 @@
-  <div class="result row">
-    <div class="col-sm-6">
-      <form>
-        <label> Member Id: </label>
-        <input
-          type="number"
-          placeholder="Enter Member Id"
-          class="form-control"
-        />
+<div class="result row">
+  <form [formGroup]="claimForm">
+  <div class="col-sm-6">
+    
+      <label> Member Id: </label>
+      <input
+        type="number"
+        placeholder="Enter Member Id"
+        class="form-control"
+        formControlName="memberId"
+        (change)="onchange()"
+        
 
-        <label> Hospital: </label>
-        <select class="form-control">
-          <option value="">Select Hospital</option>
-        </select>
+      />
 
-        <label> Remarks: </label>
-        <input type="text" placeholder="Enter Remarks" class="form-control" />
-      </form>
-    </div>
-    <div class="col-sm-6">
-      <form>
-        <label> Policy Name: </label>
-        <select class="form-control">
-          <option value="">Select Policy Name</option>
-        </select>
+      <label> Hospital: </label>
+      <select class="form-control"
+      
+      formControlName="hospitalId"
+      >
+        
+        <option value="">Select Hospital</option>
+        <option *ngFor="let hospital of hospital" value="hospital.hospitalId">{{hospital.hospitalName}}</option>
+      </select>
 
-        <label> Benefit Name: </label>
-        <select class="form-control">
-          <option value="">Select Benefit Name</option>
-        </select>
-
-        <label> Claimed Amount: </label>
-        <input
-          type="number"
-          placeholder="Claimed Amount"
-          class="form-control"
-        />
-      </form>
-    </div>
-
-    <div align="center">
-      <button id="submitbutton">Submit</button>
-    </div>
+      <label> Remarks: </label>
+      <input type="text" placeholder="Enter Remarks" class="form-control"
+      formControlName="remarks"
+      />
+    
   </div>
+  <div class="col-sm-6">
+    
+      <label> Policy Id: </label>
+      <input type="text" placeholder="Enter Policy Id" class="form-control"
+      formControlName="policyId"  (change)="onchange()"
+      />
+
+      <label> Benefit Name: </label>
+      <select class="form-control"
+      formControlName="benefitsId"
+      >
+        <option value="">Select Benefit Name</option>
+        <option *ngFor="let benefit of benefits" value="benefit.benefitId">{{benefit.benefitName}}</option>
+
+      </select>
+
+      <label> Claimed Amount: </label>
+      <input
+        type="number"
+        placeholder="Claimed Amount"
+        class="form-control"
+        formControlName="claimedAmount"
+      />
+    
+  </div>
+</form>
+  <div align="center">
+    <button id="submitbutton" (click)="submit()" [disabled]="claimForm.invalid">Submit</button>
+  </div>
+</div>
 
