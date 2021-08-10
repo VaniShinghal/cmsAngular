@@ -42,7 +42,7 @@ export class LoginService {
   }
 
   //form group for variables excanges
-  trackDetails!:any;
+  trackDetails:any;
   public getTrack(){
     return this.trackDetails;
   }

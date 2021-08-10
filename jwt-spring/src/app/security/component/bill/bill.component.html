@@ -1,11 +1,8 @@
 <div class="track">
-<h1>Track Your Claim Status</h1>
+<h1>View your bill here</h1>
 <div class="inp">
 <h2>Enter Member Id</h2>
 <form [formGroup]="trackDetails">
-    <div>
-        <input required formControlName="cid" type="text" name="cid" id="cid" placeholder="Claim ID">
-    </div>
     <div>
         <input required formControlName="mid" type="text" name="mid" id="mid" placeholder="Member ID">
     </div>
@@ -14,7 +11,7 @@
     </div>
     
     <div class="btn">
-        <button id="button" class="button" (click)="process()" routerLink="/status">Submit</button>
+        <button id="button" class="button" (click)="process()" routerLink="/viewbill">Submit</button>
     </div>
 </form>
 </div>

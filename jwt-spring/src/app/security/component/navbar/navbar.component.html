@@ -1,8 +1,10 @@
 <p> <mat-toolbar color="primary" class="nav">
-    <span>Application</span>
+    <span routerLink="/home">FastClaim</span>
     <span class="ex-spacer"></span>
     <span><a *ngIf="!loggedIn" mat-button routerLink="/login">Login</a>
-      <a mat-button *ngIf="loggedIn">User</a>
+      
+      <a mat-button routerLink="/bill" *ngIf="loggedIn">View Bill</a>
+      <a mat-button routerLink="/home" *ngIf="loggedIn">Home</a>
       <a *ngIf="loggedIn" (click)="logoutUser()" routerLink="/logout" mat-button>Logout</a>
     
     </span>

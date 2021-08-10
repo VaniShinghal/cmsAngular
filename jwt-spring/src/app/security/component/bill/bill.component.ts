@@ -4,12 +4,13 @@ import { LoginService } from '../service/login.service';
 import { TrackService } from '../service/services/track.service';
 
 @Component({
-  selector: 'app-track',
-  templateUrl: './track.component.html',
-  styleUrls: ['./track.component.css']
+  selector: 'app-bill',
+  templateUrl: './bill.component.html',
+  styleUrls: ['./bill.component.css']
 })
-export class TrackComponent implements OnInit {
-  trackDetails!:FormGroup;
+export class BillComponent implements OnInit {
+
+trackDetails!:FormGroup;
   constructor(private service:TrackService,private data:LoginService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,6 @@ export class TrackComponent implements OnInit {
         
     );
     this.trackDetails=new FormGroup({
-      cid: new FormControl(""),
       mid:new FormControl(""),
       pid:new FormControl("")
     });
@@ -33,8 +33,7 @@ export class TrackComponent implements OnInit {
     
     console.log(this.trackDetails.value);
     if(this.trackDetails.valid){
-    this.service.statusGenerate(this.trackDetails.value.cid ,this.trackDetails.value.mid, this.trackDetails.value.pid).subscribe (
-
+      this.service.generate(this.trackDetails.value.mid,this.trackDetails.value.pid).subscribe(
         (resp:any)=>{
           console.log(resp);
           this.data.setTrack(this.trackDetails.value);
@@ -44,19 +43,22 @@ export class TrackComponent implements OnInit {
           
         }
       );
-console.log(this.service.getTrackUrl());
-
+      console.log(this.service.getBillUrl());
       
-this.data.addHeader(this.service.getTrackUrl()).subscribe((resp : any) => {
-
+      this.data.addHeader(this.service.getBillUrl()).subscribe((resp:any)=>{
           console.log("res:",resp);
           this.data.setTrack(resp);
+          console.log("global res:",this.data.getTrack().premiumDue);
+          
+          
         },
         (error:any)=>{
           console.log(error);
+          
         }
       );
-      console.log("Ended");    
-    } 
+      console.log("Ended");
+    }
+    
   }
 }
