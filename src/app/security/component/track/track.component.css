@@ -1,0 +1,43 @@
+.track{
+    display: flex;
+    flex-direction: column;
+    height: 99vh;
+    background-color: rgb(30,127,134);
+    background-image: url("../../../../assets/find.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding:90px;
+}
+
+h1{
+
+    font-size: 48px;
+    margin:50px;
+}
+h2{
+
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+.inp{
+    margin: 50px;
+}
+input[type=text] {
+    font-size: 30px;
+    border: 3px solid rgb(75, 75, 75);
+    border-radius: 8px;
+    padding: 7px;
+}
+div.btn{
+    margin-top: 10px;
+    padding: 0;
+}
+.button{
+    font-size: 20px;
+    border: 3px solid rgb(75, 75, 75);
+    border-radius: 8px;
+    padding: 7px;
+    background-color: #FA8072;
+    font-weight: bold;
+
+}

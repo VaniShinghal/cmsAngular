@@ -1,45 +1,58 @@
   <div class="result row">
     <div class="col-sm-6">
-      <form>
-        <label> Member Id: </label>
+      <form >
+        <label> Claim Id: </label>
         <input
-          type="number"
-          placeholder="Enter Member Id"
+          [(ngModel)]="details.claimId"
+          name="claimId"
+          type="text"
+          placeholder="Enter Claim Id"
           class="form-control"
         />
-
-        <label> Hospital: </label>
-        <select class="form-control">
-          <option value="">Select Hospital</option>
+        <label> Hospital Id: </label>
+        <select [(ngModel)]="details.hospitalId" name="hospitalId" class="form-control">
+          <option value="H101">Apollo</option>
+          <option value="H102">SRV</option>
+          <option value="H103">AIIMS</option>
         </select>
-
-        <label> Remarks: </label>
-        <input type="text" placeholder="Enter Remarks" class="form-control" />
+        <label> Total Amount: </label>
+        <input
+        [(ngModel)]="details.totalAmount"
+          name="totalAmount"
+          type="number"
+          placeholder="Total Amount"
+          class="form-control"
+        />
       </form>
     </div>
     <div class="col-sm-6">
       <form>
         <label> Policy Name: </label>
-        <select class="form-control">
-          <option value="">Select Policy Name</option>
+        <select [(ngModel)]="details.policyId" name="policyId" class="form-control">
+          <option value="P101">PREMIUM</option>
+          <option value="P102">GOLD</option>
+          <option value="P103">CONQURER</option>
         </select>
-
         <label> Benefit Name: </label>
-        <select class="form-control">
-          <option value="">Select Benefit Name</option>
+        <select [(ngModel)]="details.benefitsId" name="benefitsId" class="form-control">
+          <option value="B101">Rs 3000 medical coverage</option>
+          <option value="B102">Rs 4000 medical coverage</option>
+          <option value="B103">Rs 5000 medical coverage</option>
         </select>
 
         <label> Claimed Amount: </label>
         <input
+          [(ngModel)]="details.claimedAmount"
+          name="claimedAmount"
           type="number"
           placeholder="Claimed Amount"
           class="form-control"
         />
       </form>
     </div>
-
     <div align="center">
-      <button id="submitbutton">Submit</button>
+      <button id="submitbutton" (click)="submit()">Submit</button>
     </div>
+    {{details| json}}
   </div>
 

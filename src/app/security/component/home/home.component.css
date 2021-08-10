@@ -5,6 +5,9 @@
     justify-content: space-between;
     background-image: linear-gradient(to bottom right, #4787DB, #F4F3E9)
 }
+.menu{
+    margin-top: 80px;
+}
 .image{
     padding-top: 40vh;
 }
@@ -20,4 +23,61 @@ h1{
 h3{
     margin:32px 10%;
     font-size: 44px;
+}
+
+
+.action{
+    margin: 24px 32px;
+
+}
+
+
+.icon{
+    padding: 20px;
+    height: 200px;
+}
+
+.bluecard{
+    background-color: #4787DB;
+    margin:16px;
+    padding:52px;
+    border-radius: 4px;
+    width: 70%;
+    height: 350px;
+
+}
+#header{
+    color: #F0EBCC;
+    
+}
+#buttons{
+    padding: 20px;
+    margin-right: 20px;
+    background-color: #4787DB;
+    border:none;
+    border-radius: 4px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 18px;
+}
+#paragraphtag{
+    margin-left: 60px;
+    font-weight: bold;
+    width: 30%;
+
+
+}
+#start{
+    margin-left: 60px;
+
+}
+#claim{
+    color: #4787DB;
+}
+.head{
+    margin-bottom: 7%;
+
+}
+#para{
+    margin-top:45px;
 }
