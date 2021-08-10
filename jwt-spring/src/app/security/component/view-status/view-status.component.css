@@ -1,0 +1,29 @@
+.status{
+    background-color: #053742;
+    height: 91.5vh;
+    padding: 50px;
+}
+h1{
+    font-size: 38px;
+    padding: 20px;
+    margin:30px;
+    color: #E8F0F2;
+    text-align: center;
+}
+.info{
+    font-size: 30px;
+    line-height: 38px;
+    background-color: #A2DBFA;
+    border-radius: 20px;
+    padding: 50px;
+    margin: 30px;
+}
+tr{
+    padding: 90x;
+}
+.table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 90px;
+}

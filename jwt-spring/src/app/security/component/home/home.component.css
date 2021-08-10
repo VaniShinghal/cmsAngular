@@ -40,10 +40,10 @@ h3{
 .bluecard{
     background-color: #4787DB;
     margin:16px;
-    padding:52px 16px;
+    padding:52px;
     border-radius: 4px;
     width: 70%;
-    height: 250px;
+    height: 350px;
 
 }
 #header{

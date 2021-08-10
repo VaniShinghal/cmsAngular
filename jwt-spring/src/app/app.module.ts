@@ -13,13 +13,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from "@angular/forms"
 import { AuthGuard } from './security/component/service/auth.guard';
+import { TrackComponent } from './security/component/track/track.component';
+import { SubmitClaimComponent } from './security/component/submit-claim/submit-claim.component';
+import { ViewStatusComponent } from './security/component/view-status/view-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    TrackComponent,
+    SubmitClaimComponent,
+    ViewStatusComponent,
   ],
   imports: [
     BrowserModule,
