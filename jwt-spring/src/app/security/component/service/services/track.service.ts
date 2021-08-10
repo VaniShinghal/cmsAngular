@@ -19,6 +19,14 @@ import {LoginService} from '../login.service';
         return this.http.get(this.trackUrl);
 
     }
+    public submitClaim(claim:any,token:string){
+        return this.http.post("http://localhost:5001/"+"submit-claim",claim,{headers:new HttpHeaders({
+          "Authorization":token
+        })}).toPromise();
+      }
+
+
+
     public getBillUrl() {
         return this.billUrl;
     }
