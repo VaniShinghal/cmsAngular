@@ -16,6 +16,9 @@ export class LoginService {
   public validate(token:String){
     return this.http.get("http://localhost:9000/validate",{headers:new HttpHeaders({"Authorization":("Bearer "+token)})})
   }
+  public addHeader(url:string){
+    return this.http.get(url,{headers:new HttpHeaders({"Authorization":("Bearer "+this.getToken())})});
+  }
   //for login user
   loginUser(token:any){
     localStorage.setItem("token",token);

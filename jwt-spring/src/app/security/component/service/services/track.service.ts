@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginService } from '../login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,4 +15,7 @@ export class TrackService {
         this.url=this.url+mid+"/member-id/"+pid;
         return this.http.get(this.url);
       }
+  public getUrl(){
+    return this.url;
+  }
     }

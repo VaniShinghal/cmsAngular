@@ -21,6 +21,7 @@ export class TrackComponent implements OnInit {
           console.log(error);
           
         }
+        
     );
     this.trackDetails=new FormGroup({
       mid:new FormControl(""),
@@ -28,6 +29,7 @@ export class TrackComponent implements OnInit {
     });
   }
   process(){
+    
     console.log(this.trackDetails.value);
     if(this.trackDetails.valid){
       this.service.generate(this.trackDetails.value.mid,this.trackDetails.value.pid).subscribe(
@@ -40,8 +42,21 @@ export class TrackComponent implements OnInit {
           
         }
       );
+      console.log(this.service.getUrl());
+      
+      this.data.addHeader(this.service.getUrl()).subscribe((resp:any)=>{
+          console.log(resp);
+          this.data.setTrack(this.trackDetails.value);
+        },
+        (error:any)=>{
+          console.log(error);
+          
+        }
+      );
+      console.log("Ended");
+      
     }
-     
+    
   }
 
 
