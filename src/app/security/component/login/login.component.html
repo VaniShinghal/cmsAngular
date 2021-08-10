@@ -1,0 +1,29 @@
+    <div class="wrapeer">
+    <div class="container mt">
+        <div class="row">
+            <div>
+                <h1>Welcome</h1>
+                <div class="col-md-6">
+                        <form (ngSubmit)="onSubmit()">
+                            <!-- form input and fields -->
+                            <mat-form-field class="full-width">
+                                <mat-label>Username</mat-label>
+                                <input required [(ngModel)]="credentials.username" name="username" type="text" matInput placeholder="Name">
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Password</mat-label>
+                                <input required [(ngModel)]="credentials.password" name="password" type="password" matInput placeholder="Password">
+                            </mat-form-field>
+                            <button type="submit" mat-raised-button  color="primary">Submit</button>
+                            <button type="reset" style="margin-left: 15px;" mat-raised-button  color="basic">Reset</button>
+                    </form>
+                </div>
+                <div class="col-md-6 offset-md-3 cover-img-parent">
+                    <!-- Display images-->
+                    <img class="img-fluid" src="assets\Insurance.png" alt="insurance">
+                </div>
+            </div>
+            {{credentials | json}}
+        </div>
+    </div>
+    </div> 

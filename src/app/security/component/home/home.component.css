@@ -1,0 +1,23 @@
+.intro{
+    height: 87.2vh;;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom right, #4787DB, #F4F3E9)
+}
+.image{
+    padding-top: 40vh;
+}
+img{
+    height:400px;
+    width: auto;
+}
+h1{
+    margin:32px 10%;
+    font-size: 82px;
+    line-height: 100px;
+}
+h3{
+    margin:32px 10%;
+    font-size: 44px;
+}
