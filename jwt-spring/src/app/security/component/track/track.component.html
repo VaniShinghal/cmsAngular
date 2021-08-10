@@ -2,13 +2,16 @@
 <h1>Track your Claim status</h1>
 <div class="inp">
 <h2>Enter Member Id</h2>
-<form>
+<form [formGroup]="trackDetails">
     <div>
-        <input type="text" name="mid" id="mid" placeholder="Member ID">
+        <input formControlName="mid" type="text" name="mid" id="mid" placeholder="Member ID">
+    </div>
+     <div>
+        <input formControlName="pid" type="text" name="pid" id="pid" placeholder="Policy ID">
     </div>
     
     <div class="btn">
-        <button id="button" class="button">Submit</button>
+        <button id="button" class="button" (click)="process()">Submit</button>
     </div>
 </form>
 </div>

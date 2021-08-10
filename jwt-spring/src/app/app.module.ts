@@ -11,7 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from "@angular/forms"
+import { FormsModule,ReactiveFormsModule } from "@angular/forms"
 import { AuthGuard } from './security/component/service/auth.guard';
 import { TrackComponent } from './security/component/track/track.component';
 import { SubmitClaimComponent } from './security/component/submit-claim/submit-claim.component';
@@ -36,7 +36,8 @@ import { ViewStatusComponent } from './security/component/view-status/view-statu
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
   ],
   providers: [AuthGuard],
