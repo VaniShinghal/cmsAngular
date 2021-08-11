@@ -6,7 +6,7 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class LoginService {
-  url="http://localhost:9000/authenticate";
+  url="http://localhost:8090/authenticate";
   constructor(private http:HttpClient) { }
 
   //calling server to generate the token
@@ -14,7 +14,7 @@ export class LoginService {
         return this.http.post(this.url,request,{responseType:"text" as "json"});
       }
   public validate(token:String){
-    return this.http.get("http://localhost:9000/validate",{headers:new HttpHeaders({"Authorization":("Bearer "+token)})})
+    return this.http.get("http://localhost:8090/validate",{headers:new HttpHeaders({"Authorization":("Bearer "+token)})})
   }
   public addHeader(url:string){
     return this.http.get(url,{headers:new HttpHeaders({"Authorization":("Bearer "+this.getToken())})});
