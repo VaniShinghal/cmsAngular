@@ -21,11 +21,14 @@ export class SubmitClaimComponent implements OnInit {
   constructor(private service:TrackService) { }
 
   ngOnInit(): void {
+    
   }
   submit(){
     console.log(this.details);
     this.service.submitClaim(this.details,String(localStorage.getItem("token"))).then((resp:any)=>{
+      if(confirm(resp.description)){
       console.log(resp);
+    }
     })
     
   }

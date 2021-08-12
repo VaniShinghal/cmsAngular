@@ -15,6 +15,16 @@
           <option value="H102">SRV</option>
           <option value="H103">AIIMS</option>
         </select>
+        <label> Member Id: </label>
+        <select [(ngModel)]="details.memberId" name="memberId" class="form-control">
+          <option value="M101">Member 1</option>
+          <option value="M102">Member 2</option>
+          <option value="M103">Member 3</option>
+        </select>
+
+
+
+
         <label> Total Amount: </label>
         <input
         [(ngModel)]="details.totalAmount"
@@ -53,6 +63,6 @@
     <div align="center">
       <button id="submitbutton" (click)="submit()">Submit</button>
     </div>
-    
+    {{details| json}}
   </div>
 
