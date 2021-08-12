@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomError } from '../../Error-Handling/Customerror';
 import { TrackService } from '../service/services/track.service';
 
 @Component({
@@ -25,11 +26,15 @@ export class SubmitClaimComponent implements OnInit {
   }
   submit(){
     console.log(this.details);
-    this.service.submitClaim(this.details,String(localStorage.getItem("token"))).then((resp:any)=>{
+    this.service.submitClaim(this.details,String(localStorage.getItem("token"))).subscribe((resp:any)=>{
       if(confirm(resp.description)){
       console.log(resp);
     }
-    })
+    },(error:any)=>{
+      
+      throw new CustomError("Invalid Claim Details");
+    }
     
+    )
   }
 }

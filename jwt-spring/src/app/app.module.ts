@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './security/component/navbar/navbar.component';
@@ -18,6 +18,8 @@ import { SubmitClaimComponent } from './security/component/submit-claim/submit-c
 import { ViewStatusComponent } from './security/component/view-status/view-status.component';
 import { ViewBillComponent } from './security/component/view-bill/view-bill.component';
 import { BillComponent } from './security/component/bill/bill.component';
+import { GlobalErrorHandler } from './security/Error-Handling/error-handler.module';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import { BillComponent } from './security/component/bill/bill.component';
     ReactiveFormsModule
     
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,
+  {provide:ErrorHandler,useClass:GlobalErrorHandler},
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

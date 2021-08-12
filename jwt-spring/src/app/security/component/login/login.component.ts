@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
         },
         error=>{
           console.log(error);
-          
+          throw new CustomError("Invalid Credentials");
         }
       );
   
