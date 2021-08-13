@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 import { TrackService } from '../service/services/track.service';
 
@@ -19,7 +20,7 @@ export class TrackComponent implements OnInit {
         },
         (error:any)=>{
           console.log(error);
-          
+          throw new CustomError("Invalid Token");
         }
         
     );
@@ -33,7 +34,7 @@ export class TrackComponent implements OnInit {
     
     console.log(this.trackDetails.value);
     if(this.trackDetails.valid){
-    this.service.statusGenerate(this.trackDetails.value.cid ,this.trackDetails.value.mid, this.trackDetails.value.pid).subscribe (
+    this.service.statusGenerate(this.trackDetails.value.cid ,this.trackDetails.value.mid, this.trackDetails.value.pid,String(this.data.getToken())).subscribe (
 
         (resp:any)=>{
           console.log(resp);
@@ -41,7 +42,7 @@ export class TrackComponent implements OnInit {
         },
         (error:any)=>{
           console.log(error);
-          
+          throw new CustomError("Invalid Details");
         }
       );
 console.log(this.service.getTrackUrl());

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 import { TrackService } from '../service/services/track.service';
 
@@ -20,6 +21,7 @@ trackDetails!:FormGroup;
         },
         (error:any)=>{
           console.log(error);
+          throw new CustomError("Token Id Invalid");
           
         }
         
@@ -33,30 +35,19 @@ trackDetails!:FormGroup;
     
     console.log(this.trackDetails.value);
     if(this.trackDetails.valid){
-      this.service.generate(this.trackDetails.value.mid,this.trackDetails.value.pid).subscribe(
+      this.service.generate(this.trackDetails.value.mid,this.trackDetails.value.pid,String(this.data.getToken())).subscribe(
         (resp:any)=>{
           console.log(resp);
           this.data.setTrack(this.trackDetails.value);
         },
         (error:any)=>{
           console.log(error);
-          
+          throw new CustomError("Invalid Details");
         }
       );
       console.log(this.service.getBillUrl());
       
-      this.data.addHeader(this.service.getBillUrl()).subscribe((resp:any)=>{
-          console.log("res:",resp);
-          this.data.setTrack(resp);
-          console.log("global res:",this.data.getTrack().premiumDue);
-          
-          
-        },
-        (error:any)=>{
-          console.log(error);
-          
-        }
-      );
+     
       console.log("Ended");
     }
     

@@ -8,21 +8,25 @@ import {LoginService} from '../login.service';
     trackUrl = "http://localhost:5001/claim-status/claim-id/";
     constructor(private http : HttpClient) {}
 
-    public generate(pid : String, mid : String) {
+    public generate(pid : String, mid : String,token: string) {
         this.billUrl = "http://localhost:5001/view-bill/policy-id/";
         this.billUrl = this.billUrl + mid + "/member-id/" + pid;
-        return this.http.get(this.billUrl);
+        return this.http.get(this.billUrl,{headers:new HttpHeaders({
+            "Authorization":("Bearer "+token)
+          })});
     }
-    public statusGenerate(cid : String, pid : String, mid : String) {
+    public statusGenerate(cid : String, pid : String, mid : String, token: string) {
         this.trackUrl = "http://localhost:5001/claim-status/claim-id/";
         this.trackUrl = this.trackUrl + cid + "/policy-id/" + mid + "/member-id/" + pid;
-        return this.http.get(this.trackUrl);
+        return this.http.get(this.trackUrl,{headers:new HttpHeaders({
+            "Authorization":("Bearer "+token)
+          })});
 
     }
     public submitClaim(claim:any,token:string){
         return this.http.post("http://localhost:5002/"+"submit-claim",claim,{headers:new HttpHeaders({
           "Authorization":("Bearer "+token)
-        })}).toPromise();
+        })});
       }
 
 
