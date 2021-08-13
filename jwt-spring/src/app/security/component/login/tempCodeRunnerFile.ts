@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
           console.log(error);
           Swal.fire(
             { icon: 'error',
-             title: 'Invalid Credentials!',
-              text: 'Username or Password is wrong!',
+             title: 'Oops...',
+              text: 'Something went wrong!',
             })
         }
       );

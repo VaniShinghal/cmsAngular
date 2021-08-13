@@ -11,8 +11,6 @@ export class ViewBillComponent implements OnInit {
   constructor(public data:LoginService) { }
 
   ngOnInit(): void {
-    
-
     console.log("lol++",this.data.getTrack());
     
   }

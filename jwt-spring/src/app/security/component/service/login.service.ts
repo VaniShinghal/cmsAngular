@@ -14,7 +14,16 @@ export class LoginService {
         return this.http.post(this.url,request,{responseType:"text" as "json"});
       }
   public validate(token:String){
-    return this.http.get("http://localhost:9000/validate",{headers:new HttpHeaders({"Authorization":("Bearer "+token)})})
+    var status = this.http.get("http://localhost:9000/validate", {
+        headers: new HttpHeaders(
+            {
+                "Authorization": ("Bearer " + token)
+            }
+        )
+    });
+
+    console.log("is token valid : ", status);
+    return status;
   }
   public addHeader(url:string){
     return this.http.get(url,{headers:new HttpHeaders({"Authorization":("Bearer "+this.getToken())})});

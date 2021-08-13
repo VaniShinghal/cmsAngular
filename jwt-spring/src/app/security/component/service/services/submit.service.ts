@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class SubmitService {
   url="http://localhost:9000/authenticate";
   constructor(private http:HttpClient) { }
   public generate(request: any){
