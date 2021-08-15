@@ -1,4 +1,5 @@
 import { ErrorHandler, Injectable } from "@angular/core";
+import Swal from "sweetalert2";
 import { CustomError } from "./Customerror";
 
 
@@ -10,7 +11,10 @@ export class GlobalErrorHandler implements ErrorHandler{
     handleError(error: Error): void {
         
         if(error instanceof CustomError){
-        alert(error.message);
+            Swal.fire(
+                { icon: 'error',
+                 title: error.message,
+                })
     }
     }
 
