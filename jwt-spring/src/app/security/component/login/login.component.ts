@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -33,7 +32,7 @@ export class LoginComponent implements OnInit {
           Swal.fire(
             { icon: 'error',
              title: 'Invalid Credentials!',
-              text: 'Username or Password is wrong!',
+            text: error.error.message
             })
         }
       );

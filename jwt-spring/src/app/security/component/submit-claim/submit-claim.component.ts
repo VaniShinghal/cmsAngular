@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomError } from '../../Error-Handling/Customerror';
 import { TrackService } from '../service/services/track.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-submit-claim',
   templateUrl: './submit-claim.component.html',
@@ -27,12 +26,21 @@ export class SubmitClaimComponent implements OnInit {
   submit(){
     console.log(this.details);
     this.service.submitClaim(this.details,String(localStorage.getItem("token"))).subscribe((resp:any)=>{
-      if(confirm(resp.description)){
       console.log(resp);
-    }
+      Swal.fire(
+            { icon: 'success',
+             title: 'Success!',
+             text: resp.description
+            })
     },(error:any)=>{
+      console.log(error);
       
-      throw new CustomError("Invalid Claim Details");
+      Swal.fire(
+            { icon: 'error',
+             title: 'Invalid Details!',
+             text: error.error.message
+            })
+      //throw new CustomError("Invalid Claim Details");
     }
     
     )

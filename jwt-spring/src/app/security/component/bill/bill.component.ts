@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 import { TrackService } from '../service/services/track.service';
 import { Router } from '@angular/router';
@@ -22,7 +21,11 @@ trackDetails!:FormGroup;
         },
         (error:any)=>{
           console.log(error);
-          throw new CustomError("Token Id Invalid");
+          Swal.fire(
+            { icon: 'error',
+             title: 'Invalid Details!',
+             text: error.error.message
+            })
           
         }
         
@@ -44,10 +47,11 @@ trackDetails!:FormGroup;
 
         },
         (error:any)=>{
-          console.log(error);
+          console.log(error.error.message);
           Swal.fire(
             { icon: 'error',
              title: 'Invalid Details!',
+             text: error.error.message
             })
           //throw new CustomError("Invalid Details");
         }

@@ -18,7 +18,6 @@ import { SubmitClaimComponent } from './security/component/submit-claim/submit-c
 import { ViewStatusComponent } from './security/component/view-status/view-status.component';
 import { ViewBillComponent } from './security/component/view-bill/view-bill.component';
 import { BillComponent } from './security/component/bill/bill.component';
-import { GlobalErrorHandler } from './security/Error-Handling/error-handler.module';
 
 
 @NgModule({
@@ -46,9 +45,7 @@ import { GlobalErrorHandler } from './security/Error-Handling/error-handler.modu
     ReactiveFormsModule
     
   ],
-  providers: [AuthGuard,
-  {provide:ErrorHandler,useClass:GlobalErrorHandler},
-  
+  providers: [AuthGuard
   ],
   bootstrap: [AppComponent]
 })

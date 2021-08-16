@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CustomError } from '../../Error-Handling/Customerror';
+import Swal from 'sweetalert2';
 import { LoginService } from '../service/login.service';
 
 @Component({selector: 'app-home', templateUrl: './home.component.html', styleUrls: ['./home.component.css']})
@@ -13,7 +13,11 @@ constructor(private data : LoginService) {}
             console.log(resp.validStatus);
         }, (error : any) => {
             console.log(error);
-            throw new CustomError("Token Id Invalid");
+            Swal.fire(
+            { icon: 'error',
+             title: 'Invalid Details!',
+             text: error.error.message
+            })
         }
         );
     }

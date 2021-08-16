@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CustomError } from '../../Error-Handling/Customerror';
 import { LoginService } from '../service/login.service';
 import { TrackService } from '../service/services/track.service';
 import Swal from 'sweetalert2';
@@ -21,7 +20,11 @@ export class TrackComponent implements OnInit {
         },
         (error:any)=>{
           console.log(error);
-          throw new CustomError("Invalid Token");
+          Swal.fire(
+            { icon: 'error',
+             title: 'Invalid Details!',
+             text: error.error.message
+            })
         }
         
     );
@@ -47,6 +50,7 @@ export class TrackComponent implements OnInit {
           Swal.fire(
             { icon: 'error',
              title: 'Invalid Details!',
+             text: error.error.message
             })
           //throw new CustomError("Invalid Details");
         }
