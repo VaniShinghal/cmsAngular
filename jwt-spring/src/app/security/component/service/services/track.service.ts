@@ -24,7 +24,7 @@ import {LoginService} from '../login.service';
 
     }
     public submitClaim(claim:any,token:string){
-        return this.http.post("http://localhost:5002/"+"submit-claim",claim,{headers:new HttpHeaders({
+        return this.http.post("http://localhost:5001/"+"submit-claim",claim,{headers:new HttpHeaders({
           "Authorization":("Bearer "+token)
         })});
       }

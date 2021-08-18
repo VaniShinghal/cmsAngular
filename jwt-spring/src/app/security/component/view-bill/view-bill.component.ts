@@ -15,6 +15,10 @@ export class ViewBillComponent implements OnInit {
   ngOnInit(): void {
     this.data.validate(String(this.data.getToken())).subscribe((resp : any) => {
             console.log(resp.validStatus);
+            if(!resp.validStatus){
+                this.data.logout();
+            this.router.navigate(["/login"]);
+            }
         }, (error : any) => {
             console.log(error);
             Swal.fire(
