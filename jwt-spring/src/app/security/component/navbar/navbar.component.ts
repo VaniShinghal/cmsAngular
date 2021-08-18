@@ -9,13 +9,17 @@ export class NavbarComponent implements OnInit {
 
   public loggedIn=false;
   
-  constructor(private loginService:LoginService) { }
+  constructor(private data:LoginService) { }
   
   ngOnInit(): void {
-    this.loggedIn=!!localStorage.getItem("token");
+this.data.validate(String(this.data.getToken())).subscribe((resp : any) => {
+            this.loggedIn=resp.validStatus;
+        });
+
   }
   logoutUser(){
-    this.loginService.logout();
+    this.data.logout();
+    this.loggedIn=false;
   }
 
 }
