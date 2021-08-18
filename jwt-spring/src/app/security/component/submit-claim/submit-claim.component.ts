@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackService } from '../service/services/track.service';
 import Swal from 'sweetalert2';
+import { LoginService } from '../service/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-submit-claim',
   templateUrl: './submit-claim.component.html',
@@ -18,9 +20,22 @@ export class SubmitClaimComponent implements OnInit {
   };
 
 
-  constructor(private service:TrackService) { }
+  constructor(private service:TrackService,private data:LoginService,private router:Router) { }
 
   ngOnInit(): void {
+    this.data.validate(String(this.data.getToken())).subscribe((resp : any) => {
+            console.log(resp.validStatus);
+        }, (error : any) => {
+            console.log(error);
+            Swal.fire(
+            { icon: 'info',
+             title: 'Token Expired!',
+             text: "Please Login Again"
+            })
+            this.data.logout();
+            this.router.navigate(["\login"]);
+        }
+        );
     
   }
   submit(){

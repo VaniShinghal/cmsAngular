@@ -15,21 +15,19 @@ trackDetails!:FormGroup;
   constructor(private service:TrackService,private data:LoginService,private router:Router) { }
 
   ngOnInit(): void {
-    this.data.validate(String(this.data.getToken())).subscribe(
-        (resp:any)=>{
-          console.log(resp.validStatus);
-        },
-        (error:any)=>{
-          console.log(error);
-          Swal.fire(
-            { icon: 'error',
-             title: 'Invalid Details!',
-             text: error.error.message
+    this.data.validate(String(this.data.getToken())).subscribe((resp : any) => {
+            console.log(resp.validStatus);
+        }, (error : any) => {
+            console.log(error);
+            Swal.fire(
+            { icon: 'info',
+             title: 'Token Expired!',
+             text: "Please Login Again"
             })
-          
+            this.data.logout();
+            this.router.navigate(["/login"]);
         }
-        
-    );
+        );
     this.trackDetails=new FormGroup({
       mid:new FormControl(""),
       pid:new FormControl("")
